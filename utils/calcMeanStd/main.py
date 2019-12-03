@@ -4,6 +4,9 @@ import torch, time, os
 from torch.utils import data
 from torchvision import datasets, transforms
 
+current_path = os.getcwd()
+IMG_PATH = os.path.join(current_path, '../../dataset')
+
 def data_loader (root_path):
     t = time.time()
     print('Data loading...')
@@ -48,7 +51,7 @@ def calcMeanStd(dataloader):
 
 def main():
     # Build pytorch dataset and batch dataloader
-    dataset = datasets.ImageFolder(root=DATASET_PATH,
+    dataset = datasets.ImageFolder(root=IMG_PATH,
                                    transform=transforms.Compose([
                                    transforms.Resize((224, 224)),
                                    transforms.ToTensor()]))
